@@ -1,39 +1,13 @@
 [
-  {
-    "id": "icml-2026",
-    "name": "ICML 2026",
-    "topic": "ML/DL",
-    "timezone": "AoE",
-    "url": "https://icml.cc/Conferences/2026",
-    "location": "Seoul, South Korea (COEX)",
-    "startDate": "2026-07-06",
-    "endDate": "2026-07-11",
-    "timeline": [
-      { "label": "Submission opens", "date": "2026-01-08", "type": "submission" },
-      { "label": "Abstract deadline", "date": "2026-01-23", "type": "deadline" },
-      { "label": "Full paper deadline", "date": "2026-01-28", "type": "deadline" },
-      { "label": "Reviews released", "date": "2026-03-24", "type": "review" },
-      { "label": "Author response (rebuttal)", "date": "2026-03-30", "type": "deadline" },
-      { "label": "Author notification", "date": "2026-04-30", "type": "review" }
-    ],
-    "notes": "Tutorials/Expo: Jul 6 · Main Conference: Jul 7-9 · Workshops: Jul 10-11\n\nRegistration:\n• Early pricing before: May 24\n• Cancellation: Jun 15"
-  },
-  { "id": "neurips-2026", "name": "NeurIPS 2026", "topic": "ML/DL" },
-  { "id": "iclr-2026", "name": "ICLR 2026", "topic": "ML/DL" },
-  { "id": "cvpr-2026", "name": "CVPR 2026", "topic": "Computer Vision" },
-  { "id": "iccv-2026", "name": "ICCV 2026", "topic": "Computer Vision" },
-  { "id": "eccv-2026", "name": "ECCV 2026", "topic": "Computer Vision" },
-  { "id": "3dv-2026", "name": "3DV 2026", "topic": "3D Vision" },
-  { "id": "acl-2026", "name": "ACL 2026", "topic": "NLP" },
-  { "id": "emnlp-2026", "name": "EMNLP 2026", "topic": "NLP" },
-  { "id": "naacl-2026", "name": "NAACL 2026", "topic": "NLP" },
-  { "id": "icra-2026", "name": "ICRA 2026", "topic": "Robotics" },
-  { "id": "iros-2026", "name": "IROS 2026", "topic": "Robotics" },
-  { "id": "corl-2026", "name": "CoRL 2026", "topic": "Robotics" },
-  { "id": "siggraph-2026", "name": "SIGGRAPH 2026", "topic": "Graphics" },
-  { "id": "eurographics-2026", "name": "Eurographics 2026", "topic": "Graphics" },
-  { "id": "chi-2026", "name": "CHI 2026", "topic": "HCI" },
-  { "id": "ismar-2026", "name": "ISMAR 2026", "topic": "HCI" },
+  { "id": "icml-2026", "name": "ICML 2026", "topic": "ML/DL", "timezone": "AoE", "url": "https://icml.cc/Conferences/2026", "location": "Seoul, South Korea", "startDate": "2026-07-06", "endDate": "2026-07-11", "timeline": [
+    { "label": "Submission opens", "date": "2026-01-08", "type": "submission" },
+    { "label": "Abstract deadline", "date": "2026-01-23", "type": "deadline" },
+    { "label": "Full paper deadline", "date": "2026-01-28", "type": "deadline" },
+    { "label": "Reviews released", "date": "2026-03-24", "type": "review" },
+    { "label": "Author response / rebuttal", "date": "2026-03-30", "type": "deadline" },
+    { "label": "Author notification", "date": "2026-04-30", "type": "review" }
+  ] },
+
   { "id": "miccai-2026", "name": "MICCAI 2026", "topic": "Medical Imaging", "timezone": "PST", "url": "https://conferences.miccai.org/2026/en/", "location": "Strasbourg, France", "startDate": "2026-09-27", "endDate": "2026-10-01", "timeline": [
     { "label": "Abstract registration (intention to submit)", "date": "2026-02-12", "type": "deadline" },
     { "label": "Paper submission", "date": "2026-02-26", "type": "deadline" },
@@ -45,5 +19,98 @@
     { "label": "Author registration deadline", "date": "2026-06-26", "type": "deadline" },
     { "label": "Open access publication", "date": "2026-09-21", "type": "review" }
   ], "notes": "Relocated from Abu Dhabi to Strasbourg.\n\nSatellite events (workshops/challenges/tutorials) run Sept 27-Oct 1.\n\nGrants:\n• Registration grant deadline: May 17\n• Travel grant deadline: July 1\n\nCLINICCAI (Clinical Day):\n• Abstract: April 2026\n• Notification: May 2026" },
-  { "id": "aaai-2026", "name": "AAAI 2026", "topic": "ML/DL" }
+
+  { "id": "neurips-2026", "name": "NeurIPS 2026", "topic": "ML/DL", "timezone": "AoE", "url": "https://neurips.cc/Conferences/2026", "location": "Sydney, Australia", "startDate": "2026-12-06", "endDate": "2026-12-12", "timeline": [
+    { "label": "Abstract submission", "date": "2026-05-04", "type": "deadline" },
+    { "label": "Full paper submission", "date": "2026-05-06", "type": "deadline" },
+    { "label": "Competition submission", "date": "2026-05-15", "type": "deadline" },
+    { "label": "Workshop application deadline", "date": "2026-06-06", "type": "deadline" },
+    { "label": "Competition acceptance notification", "date": "2026-06-15", "type": "review" },
+    { "label": "Workshop acceptance notification", "date": "2026-07-11", "type": "review" },
+    { "label": "Paper author notification", "date": "2026-09-24", "type": "review" }
+  ], "notes": "40th annual conference. Held in Sydney with satellite locations in Atlanta (Georgia World Congress Center) and Paris (Palais des Congres)." },
+
+  { "id": "iclr-2026", "name": "ICLR 2026", "topic": "ML/DL", "timezone": "AoE", "url": "https://iclr.cc/Conferences/2026", "location": "Rio de Janeiro, Brazil", "startDate": "2026-04-23", "endDate": "2026-04-27", "timeline": [
+    { "label": "Submission deadline", "date": "2025-09-24", "type": "deadline" },
+    { "label": "Reviews released", "date": "2025-11-11", "type": "review" },
+    { "label": "Author/reviewer discussion ends", "date": "2025-12-03", "type": "deadline" },
+    { "label": "Final decisions", "date": "2026-01-25", "type": "review" }
+  ], "notes": "Main conference Apr 23-25, workshops Apr 26-27.\n\n14th edition. Uses OpenReview for double-blind review." },
+
+  { "id": "aaai-2026", "name": "AAAI 2026", "topic": "ML/DL", "timezone": "SGT", "url": "https://aaai.org/conference/aaai/aaai-26/", "location": "Singapore", "startDate": "2026-01-20", "endDate": "2026-01-27", "timeline": [], "notes": "40th edition. Held at Singapore EXPO.\n\nMain technical program: Jan 22-25.\nSome workshops held offsite at Grand Mercure Roxy Hotel on Jan 26.\n\nConference already concluded." },
+
+  { "id": "cvpr-2026", "name": "CVPR 2026", "topic": "Computer Vision", "timezone": "AoE", "url": "https://cvpr.thecvf.com/Conferences/2026", "location": "Denver, USA", "startDate": "2026-06-03", "endDate": "2026-06-07", "timeline": [
+    { "label": "Abstract / author registration", "date": "2025-11-07", "type": "deadline" },
+    { "label": "Paper submission", "date": "2025-11-13", "type": "deadline" },
+    { "label": "Supplementary materials", "date": "2025-11-20", "type": "deadline" }
+  ], "notes": "43rd annual conference. Held at Denver Convention Center.\nMain conference Jun 5-7, workshops/tutorials Jun 3-4." },
+
+  { "id": "eccv-2026", "name": "ECCV 2026", "topic": "Computer Vision", "timezone": "CET", "url": "https://eccv.ecva.net/Conferences/2026", "location": "Malmo, Sweden", "startDate": "2026-09-08", "endDate": "2026-09-12", "timeline": [
+    { "label": "Paper registration", "date": "2026-02-26", "type": "deadline" },
+    { "label": "Paper submission", "date": "2026-03-05", "type": "deadline" },
+    { "label": "Supplemental materials", "date": "2026-03-12", "type": "deadline" },
+    { "label": "Reviews released", "date": "2026-05-02", "type": "review" },
+    { "label": "Rebuttal deadline", "date": "2026-05-11", "type": "deadline" },
+    { "label": "Final decisions", "date": "2026-06-17", "type": "review" },
+    { "label": "Camera-ready", "date": "2026-06-27", "type": "deadline" }
+  ], "notes": "36th edition. Held at Malmo Arena and Malmomassan." },
+
+  { "id": "iccv-2026", "name": "ICCV 2026", "topic": "Computer Vision", "notes": "ICCV is biennial — held in odd years only (alternates with ECCV).\n\nNo ICCV in 2026. Next edition: ICCV 2027." },
+
+  { "id": "3dv-2026", "name": "3DV 2026", "topic": "3D Vision", "timezone": "PST", "url": "https://3dvconf.github.io/2026/", "location": "Vancouver, Canada", "startDate": "2026-03-20", "endDate": "2026-03-23", "timeline": [
+    { "label": "Paper submission", "date": "2025-08-18", "type": "deadline" },
+    { "label": "Supplementary material", "date": "2025-08-21", "type": "deadline" },
+    { "label": "Reviews due", "date": "2025-10-09", "type": "review" },
+    { "label": "Paper notification", "date": "2025-11-05", "type": "review" }
+  ], "notes": "13th edition. No rebuttal — decisions made directly from initial submission/reviews.\n\nConference already concluded." },
+
+  { "id": "acl-2026", "name": "ACL 2026", "topic": "NLP", "timezone": "AoE", "url": "https://2026.aclweb.org/", "location": "San Diego, USA", "startDate": "2026-07-02", "endDate": "2026-07-07", "timeline": [], "notes": "64th annual meeting. Held at Grand Hyatt Manchester, San Diego.\n\nUses ARR (ACL Rolling Review) — papers go through rolling review cycles, then authors commit to ACL. No traditional fixed submission deadline; deadlines depend on which ARR cycle authors target." },
+
+  { "id": "emnlp-2026", "name": "EMNLP 2026", "topic": "NLP", "timezone": "AoE", "url": "https://2026.emnlp.org/", "location": "Budapest, Hungary", "startDate": "2026-10-24", "endDate": "2026-10-29", "timeline": [
+    { "label": "ARR submission deadline (long & short papers)", "date": "2026-05-25", "type": "deadline" },
+    { "label": "Reviewer registration deadline", "date": "2026-05-27", "type": "deadline" },
+    { "label": "Author response period starts", "date": "2026-07-07", "type": "deadline" },
+    { "label": "Author response ends", "date": "2026-07-13", "type": "deadline" },
+    { "label": "Meta review release", "date": "2026-07-30", "type": "review" },
+    { "label": "Acceptance notification", "date": "2026-08-20", "type": "review" }
+  ], "notes": "Uses ARR (ACL Rolling Review). Organized by SIGDAT." },
+
+  { "id": "naacl-2026", "name": "NAACL 2026", "topic": "NLP", "notes": "NAACL alternates with EACL and AACL across years. No NAACL in 2026 — the corresponding *ACL conference is EACL 2026.\n\nNext NAACL edition: NAACL 2027." },
+
+  { "id": "icra-2026", "name": "ICRA 2026", "topic": "Robotics", "timezone": "PST", "url": "https://2026.ieee-icra.org/", "location": "Vienna, Austria", "startDate": "2026-06-01", "endDate": "2026-06-05", "timeline": [
+    { "label": "Paper submission opens", "date": "2025-07-15", "type": "submission" },
+    { "label": "Paper submission deadline", "date": "2025-09-15", "type": "deadline" },
+    { "label": "Acceptance notification", "date": "2026-01-31", "type": "review" },
+    { "label": "Camera-ready", "date": "2026-03-06", "type": "deadline" }
+  ], "notes": "43rd edition. Theme: \"Robots for all\"." },
+
+  { "id": "iros-2026", "name": "IROS 2026", "topic": "Robotics", "timezone": "PST", "url": "https://2026.ieee-iros.org/", "location": "Pittsburgh, USA", "startDate": "2026-09-27", "endDate": "2026-10-01", "timeline": [
+    { "label": "Paper submission", "date": "2026-03-02", "type": "deadline" },
+    { "label": "Paper video submission", "date": "2026-03-05", "type": "deadline" },
+    { "label": "Acceptance notification", "date": "2026-06-16", "type": "review" },
+    { "label": "Final paper (camera-ready)", "date": "2026-07-10", "type": "deadline" }
+  ], "notes": "Held at David L. Lawrence Convention Center, Pittsburgh (\"Roboburgh\")." },
+
+  { "id": "corl-2026", "name": "CoRL 2026", "topic": "Robotics", "timezone": "UTC", "url": "https://www.corl.org/", "location": "Austin, USA", "startDate": "2026-11-09", "endDate": "2026-11-12", "timeline": [
+    { "label": "Abstract submission", "date": "2026-05-25", "type": "deadline" },
+    { "label": "Full paper submission", "date": "2026-05-28", "type": "deadline" }
+  ], "notes": "Workshop day Nov 9, main conference Nov 10-12. Held at JW Marriott Austin, 110 E 2nd St.\n\n8-page limit + unlimited references." },
+
+  { "id": "siggraph-2026", "name": "SIGGRAPH 2026", "topic": "Graphics", "timezone": "GMT", "url": "https://s2026.siggraph.org/", "location": "Los Angeles, USA", "startDate": "2026-07-19", "endDate": "2026-07-23", "timeline": [
+    { "label": "Submission form deadline", "date": "2026-01-15", "type": "deadline" },
+    { "label": "Paper deadline", "date": "2026-01-22", "type": "deadline" },
+    { "label": "Computer Animation Festival deadline", "date": "2026-03-17", "type": "deadline" },
+    { "label": "Official publication date", "date": "2026-07-03", "type": "review" }
+  ], "notes": "53rd edition. Proceedings published as ACM Transactions on Graphics Vol. 45, Issue 4.\n\nStarting Jan 2026, full/short papers subject to Article Processing Charge (APC) under ACM Open Access transition." },
+
+  { "id": "eurographics-2026", "name": "Eurographics 2026", "topic": "Graphics", "timezone": "CET", "url": "https://eg2026.github.io/", "location": "Aachen, Germany", "startDate": "2026-05-04", "endDate": "2026-05-08", "timeline": [], "notes": "47th annual conference of the European Association for Computer Graphics.\n\nAccepted full papers published in Computer Graphics Forum journal." },
+
+  { "id": "chi-2026", "name": "CHI 2026", "topic": "HCI", "timezone": "AoE", "url": "https://chi2026.acm.org/", "location": "Barcelona, Spain", "startDate": "2026-04-13", "endDate": "2026-04-17", "timeline": [
+    { "label": "Abstract registration (mandatory)", "date": "2025-09-04", "type": "deadline" }
+  ], "notes": "Conference already concluded." },
+
+  { "id": "ismar-2026", "name": "ISMAR 2026", "topic": "HCI", "timezone": "CET", "url": "https://www.ieeeismar.net/2026/", "location": "Bari, Italy", "startDate": "2026-10-05", "endDate": "2026-10-09", "timeline": [
+    { "label": "Abstract submission", "date": "2026-03-09", "type": "deadline" },
+    { "label": "Paper submission", "date": "2026-03-16", "type": "deadline" }
+  ], "notes": "25th edition. Covers AR (Augmented Reality), MR (Mixed Reality), and VR (Virtual Reality)." }
 ]
