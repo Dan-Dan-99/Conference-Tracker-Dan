@@ -186,6 +186,7 @@
   }
 
   .cal-weekday.sun { color: var(--danger); }
+  .cal-weekday.sat { color: var(--ink-color); }
 
   .cal-day {
     aspect-ratio: 1 / 1.1;
@@ -228,6 +229,8 @@
 
   .cal-day.sun .cal-day-num { color: var(--danger); }
   .cal-day.sun.today .cal-day-num { color: var(--bg); background: var(--danger); }
+  .cal-day.sat .cal-day-num { color: var(--ink-color); }
+  .cal-day.sat.today .cal-day-num { color: var(--bg); background: var(--ink-color); }
 
   .cal-day-events {
     display: flex;
@@ -437,6 +440,41 @@
   .urg-pill.warn { background: var(--soon-bg); color: var(--warn); }
   .urg-pill.calm { background: #dfe6cf; color: var(--ok); }
   .urg-pill.gone { background: var(--past-bg); color: var(--text-light); }
+
+  /* Card header (name + toggle) + collapsible timeline */
+  .conf-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .conf-name-block { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+
+  .card-toggle {
+    flex-shrink: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    font-size: 11px;
+    color: var(--text-soft);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    line-height: 1;
+    padding: 0;
+  }
+  .card-toggle:hover {
+    border-color: var(--text);
+    color: var(--text);
+  }
+
+  .conf-card .timeline { display: none; }
+  .conf-card.expanded .timeline { display: grid; }
+  .conf-card.expanded .card-toggle { transform: rotate(90deg); }
 
   /* ============================================
      ADD FORM (generates JSON to copy)
@@ -1043,6 +1081,7 @@ function renderCalendar() {
     const cls = ['cal-day'];
     if (events.length) cls.push('has-events');
     if (dow === 0) cls.push('sun');
+    if (dow === 6) cls.push('sat');
     if (day === todayDate) cls.push('today');
     if (selectedDate && selectedDate.year === calYear && selectedDate.month === calMonth && selectedDate.day === day) cls.push('selected');
 
@@ -1088,7 +1127,7 @@ function renderCalendar() {
       </div>
     </div>
     <div class="cal-grid">
-      ${weekdays.map((d,i) => `<div class="cal-weekday ${i===0?'sun':''}">${d}</div>`).join('')}
+      ${weekdays.map((d,i) => `<div class="cal-weekday ${i===0?'sun':''}${i===6?'sat':''}">${d}</div>`).join('')}
       ${cells}
     </div>
     ${detailPanel}
@@ -1106,7 +1145,7 @@ function renderTopicGroups() {
     groups[topic].push(conf);
   }
 
-  const topicNames = Object.keys(groups).sort();
+  const topicNames = Object.keys(groups).sort((a,b) => a.localeCompare(b));
 
   return `
     <div class="topics">
@@ -1115,7 +1154,7 @@ function renderTopicGroups() {
         ${topicNames.map(t => `
           <div class="topic-col">
             <div class="topic-name">${escapeHTML(t)}</div>
-            ${groups[t].map(c => renderTopicItem(c)).join('')}
+            ${groups[t].slice().sort((a,b) => a.name.localeCompare(b.name)).map(c => renderTopicItem(c)).join('')}
           </div>
         `).join('')}
       </div>
@@ -1207,9 +1246,12 @@ function renderCard(conf) {
   return `
     <div class="conf-card ${urg.kind === 'gone' ? 'past' : ''}" data-id="${escapeHTML(conf.id)}">
       <div class="conf-main">
-        <div>
-          <div class="conf-name">${escapeHTML(conf.name)}</div>
-          ${meta.length ? `<div class="conf-meta">${meta.map(m => `<span>${escapeHTML(m)}</span>`).join('')}</div>` : ''}
+        <div class="conf-header">
+          <div class="conf-name-block">
+            <div class="conf-name">${escapeHTML(conf.name)}</div>
+            ${meta.length ? `<div class="conf-meta">${meta.map(m => `<span>${escapeHTML(m)}</span>`).join('')}</div>` : ''}
+          </div>
+          ${timeline ? `<button class="card-toggle" data-toggle aria-label="Toggle timeline">▶</button>` : ''}
         </div>
         ${timeline ? `<div class="timeline">${timeline}</div>` : ''}
       </div>
@@ -1221,6 +1263,12 @@ function renderCard(conf) {
 }
 
 function attachListHandlers() {
+  document.querySelectorAll('.card-toggle').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      btn.closest('.conf-card').classList.toggle('expanded');
+    });
+  });
   document.querySelectorAll('.conf-card').forEach(el => {
     el.addEventListener('click', () => openDetail(el.dataset.id));
   });
