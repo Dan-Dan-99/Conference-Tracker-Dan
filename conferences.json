@@ -1,0 +1,49 @@
+[
+  {
+    "id": "icml-2026",
+    "name": "ICML 2026",
+    "topic": "ML/DL",
+    "timezone": "AoE",
+    "url": "https://icml.cc/Conferences/2026",
+    "location": "Seoul, South Korea (COEX)",
+    "startDate": "2026-07-06",
+    "endDate": "2026-07-11",
+    "timeline": [
+      { "label": "Submission opens", "date": "2026-01-08", "type": "submission" },
+      { "label": "Abstract deadline", "date": "2026-01-23", "type": "deadline" },
+      { "label": "Full paper deadline", "date": "2026-01-28", "type": "deadline" },
+      { "label": "Reviews released", "date": "2026-03-24", "type": "review" },
+      { "label": "Author response (rebuttal)", "date": "2026-03-30", "type": "deadline" },
+      { "label": "Author notification", "date": "2026-04-30", "type": "review" }
+    ],
+    "notes": "Tutorials/Expo: Jul 6 · Main Conference: Jul 7-9 · Workshops: Jul 10-11\n\nRegistration:\n• Early pricing before: May 24\n• Cancellation: Jun 15"
+  },
+  { "id": "neurips-2026", "name": "NeurIPS 2026", "topic": "ML/DL" },
+  { "id": "iclr-2026", "name": "ICLR 2026", "topic": "ML/DL" },
+  { "id": "cvpr-2026", "name": "CVPR 2026", "topic": "Computer Vision" },
+  { "id": "iccv-2026", "name": "ICCV 2026", "topic": "Computer Vision" },
+  { "id": "eccv-2026", "name": "ECCV 2026", "topic": "Computer Vision" },
+  { "id": "3dv-2026", "name": "3DV 2026", "topic": "3D Vision" },
+  { "id": "acl-2026", "name": "ACL 2026", "topic": "NLP" },
+  { "id": "emnlp-2026", "name": "EMNLP 2026", "topic": "NLP" },
+  { "id": "naacl-2026", "name": "NAACL 2026", "topic": "NLP" },
+  { "id": "icra-2026", "name": "ICRA 2026", "topic": "Robotics" },
+  { "id": "iros-2026", "name": "IROS 2026", "topic": "Robotics" },
+  { "id": "corl-2026", "name": "CoRL 2026", "topic": "Robotics" },
+  { "id": "siggraph-2026", "name": "SIGGRAPH 2026", "topic": "Graphics" },
+  { "id": "eurographics-2026", "name": "Eurographics 2026", "topic": "Graphics" },
+  { "id": "chi-2026", "name": "CHI 2026", "topic": "HCI" },
+  { "id": "ismar-2026", "name": "ISMAR 2026", "topic": "HCI" },
+  { "id": "miccai-2026", "name": "MICCAI 2026", "topic": "Medical Imaging", "timezone": "PST", "url": "https://conferences.miccai.org/2026/en/", "location": "Strasbourg, France", "startDate": "2026-09-27", "endDate": "2026-10-01", "timeline": [
+    { "label": "Abstract registration (intention to submit)", "date": "2026-02-12", "type": "deadline" },
+    { "label": "Paper submission", "date": "2026-02-26", "type": "deadline" },
+    { "label": "Early acceptance / Reviews released", "date": "2026-05-07", "type": "review" },
+    { "label": "Rebuttal period (May 8-14)", "date": "2026-05-08", "type": "deadline" },
+    { "label": "Camera-ready (early accepted)", "date": "2026-05-25", "type": "deadline" },
+    { "label": "Notification of paper decisions", "date": "2026-06-12", "type": "review" },
+    { "label": "Camera-ready (all other papers)", "date": "2026-06-26", "type": "deadline" },
+    { "label": "Author registration deadline", "date": "2026-06-26", "type": "deadline" },
+    { "label": "Open access publication", "date": "2026-09-21", "type": "review" }
+  ], "notes": "Relocated from Abu Dhabi to Strasbourg.\n\nSatellite events (workshops/challenges/tutorials) run Sept 27-Oct 1.\n\nGrants:\n• Registration grant deadline: May 17\n• Travel grant deadline: July 1\n\nCLINICCAI (Clinical Day):\n• Abstract: April 2026\n• Notification: May 2026" },
+  { "id": "aaai-2026", "name": "AAAI 2026", "topic": "ML/DL" }
+]
