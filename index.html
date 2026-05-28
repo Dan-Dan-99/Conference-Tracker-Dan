@@ -439,7 +439,7 @@
   .urg-pill.danger { background: var(--urg-bg); color: var(--danger); }
   .urg-pill.warn { background: var(--soon-bg); color: var(--warn); }
   .urg-pill.calm { background: #dfe6cf; color: var(--ok); }
-  .urg-pill.gone { background: var(--past-bg); color: var(--text-light); }
+  .urg-pill.gone { background: #d8d4cc; color: #7a756c; }
 
   /* Card header (name + toggle) + collapsible timeline */
   .conf-header {
@@ -475,6 +475,19 @@
   .conf-card .timeline { display: none; }
   .conf-card.expanded .timeline { display: grid; }
   .conf-card.expanded .card-toggle { transform: rotate(90deg); }
+
+  /* Inline notes shown for cards without a timeline (collapsed by default) */
+  .card-notes {
+    display: none;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-soft);
+    white-space: pre-wrap;
+    padding-top: 14px;
+    margin-top: 14px;
+    border-top: 1px dashed var(--border-soft);
+  }
+  .conf-card.expanded .card-notes { display: block; }
 
   /* ============================================
      ADD FORM (generates JSON to copy)
@@ -978,24 +991,26 @@ function getTimelineItems(conf) {
 }
 
 function urgencyOf(conf) {
-  const items = getTimelineItems(conf);
-  const upcoming = items
-    .map(it => ({ days: daysFromNow(it.date) }))
-    .filter(x => x.days !== null && x.days >= 0)
-    .sort((a, b) => a.days - b.days);
-  if (upcoming.length > 0) {
-    const d = upcoming[0].days;
-    if (d <= 7) return { kind: 'danger', label: `D-${d}`, days: d };
-    if (d <= 30) return { kind: 'warn', label: `D-${d}`, days: d };
-    return { kind: 'calm', label: `D-${d}`, days: d };
-  }
-  // Nothing upcoming — is the conference itself in the past?
-  const endDays = daysFromNow(conf.endDate);
   const startDays = daysFromNow(conf.startDate);
-  if ((endDays !== null && endDays < 0) || (endDays === null && startDays !== null && startDays < 0)) {
+  const endDays = daysFromNow(conf.endDate);
+
+  // No start date → TBD (placeholder / off-year entries)
+  if (startDays === null) {
+    return { kind: 'calm', label: 'TBD', days: null };
+  }
+  // Conference already ended (or started in the past with no end date recorded)
+  if ((endDays !== null && endDays < 0) || (endDays === null && startDays < 0)) {
     return { kind: 'gone', label: 'past', days: null };
   }
-  return { kind: 'calm', label: 'TBD', days: null };
+  // Conference is currently ongoing
+  if (startDays <= 0 && endDays !== null && endDays >= 0) {
+    return { kind: 'danger', label: 'now', days: 0 };
+  }
+  // Upcoming — D-day counts down to the conference start
+  const d = startDays;
+  if (d <= 14) return { kind: 'danger', label: `D-${d}`, days: d };
+  if (d <= 30) return { kind: 'warn', label: `D-${d}`, days: d };
+  return { kind: 'calm', label: `D-${d}`, days: d };
 }
 
 function escapeHTML(s) {
@@ -1210,13 +1225,19 @@ function renderList() {
       <p>Use the "Add new" tab to generate a JSON entry, then paste it into <code>conferences.json</code>.</p>
     </div>`;
   }
+  // Sort by conference start date (ascending) within each bucket.
+  // Bucket order: upcoming/current → TBD (no date) → past (already ended).
+  const todayStr = new Date().toISOString().slice(0, 10);
+  const bucket = (c) => {
+    if (c.endDate && c.endDate < todayStr) return 2; // past
+    if (!c.startDate) return 1;                      // TBD
+    return 0;                                        // upcoming/current
+  };
   const sorted = [...state.conferences].sort((a, b) => {
-    const ua = urgencyOf(a), ub = urgencyOf(b);
-    if (ua.kind === 'gone' && ub.kind !== 'gone') return 1;
-    if (ub.kind === 'gone' && ua.kind !== 'gone') return -1;
-    if (ua.days === null) return 1;
-    if (ub.days === null) return -1;
-    return ua.days - ub.days;
+    const ba = bucket(a), bb = bucket(b);
+    if (ba !== bb) return ba - bb;
+    if (ba === 1) return a.name.localeCompare(b.name); // both TBD → by name
+    return a.startDate.localeCompare(b.startDate);     // both have dates → by start
   });
   return `<div class="list">${sorted.map(renderCard).join('')}</div>`;
 }
@@ -1243,6 +1264,10 @@ function renderCard(conf) {
     </div>`;
   }).join('');
 
+  // Cards without a timeline still expand if they have notes — keeps click behavior consistent.
+  const expandableNotes = !timeline && conf.notes ? `<div class="card-notes">${escapeHTML(conf.notes)}</div>` : '';
+  const hasExpandable = !!(timeline || expandableNotes);
+
   return `
     <div class="conf-card ${urg.kind === 'gone' ? 'past' : ''}" data-id="${escapeHTML(conf.id)}">
       <div class="conf-main">
@@ -1251,9 +1276,9 @@ function renderCard(conf) {
             <div class="conf-name">${escapeHTML(conf.name)}</div>
             ${meta.length ? `<div class="conf-meta">${meta.map(m => `<span>${escapeHTML(m)}</span>`).join('')}</div>` : ''}
           </div>
-          ${timeline ? `<button class="card-toggle" data-toggle aria-label="Toggle timeline">▶</button>` : ''}
+          ${hasExpandable ? `<button class="card-toggle" data-toggle aria-label="Toggle">▶</button>` : ''}
         </div>
-        ${timeline ? `<div class="timeline">${timeline}</div>` : ''}
+        ${timeline ? `<div class="timeline">${timeline}</div>` : expandableNotes}
       </div>
       <div class="conf-side">
         <span class="urg-pill ${urg.kind}">${urg.label}</span>
@@ -1263,14 +1288,29 @@ function renderCard(conf) {
 }
 
 function attachListHandlers() {
+  // Arrow stays as a pure toggle (expand/collapse only — never opens modal).
   document.querySelectorAll('.card-toggle').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       btn.closest('.conf-card').classList.toggle('expanded');
     });
   });
+  // Card body: 1st click expands the timeline (or notes), 2nd click (while expanded) opens detail.
+  // Cards with literally nothing to expand open detail immediately.
   document.querySelectorAll('.conf-card').forEach(el => {
-    el.addEventListener('click', () => openDetail(el.dataset.id));
+    el.addEventListener('click', (e) => {
+      if (e.target.closest('[data-toggle]')) return; // arrow handled above
+      const hasExpandable = !!el.querySelector('.timeline, .card-notes');
+      if (!hasExpandable) {
+        openDetail(el.dataset.id);
+        return;
+      }
+      if (!el.classList.contains('expanded')) {
+        el.classList.add('expanded');
+      } else {
+        openDetail(el.dataset.id);
+      }
+    });
   });
 }
 
